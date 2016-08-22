@@ -1,0 +1,1 @@
+# cloudbridge-template-base
