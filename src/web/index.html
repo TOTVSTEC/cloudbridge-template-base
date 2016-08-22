@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+	<title><%= appname %></title>
+
+	<!-- build:css styles/vendor.css -->
+	<!-- bower:css -->
+	<!-- endbower -->
+	<!-- endbuild -->
+
+	<!-- build:css styles/app.css -->
+	<link rel="stylesheet" href="styles/app.css">
+	<!-- endbuild -->
+</head>
+
+<body>
+	<div class="splash">
+		<h1 class="splash-title"><%= appname %></h1>
+		<img class="totvs-logo" src="images/totvs.png" />
+		<img class="cloudbridge-logo" src="images/cloudbridge.png" />
+	</div>
+
+    <h2>Welcome to TOTVS CloudBridge!</h2>
+
+    <button type="button" onclick="channel.getPicture(function cb() {});">
+        TakePicture
+    </button>
+
+
+	<!-- build:js scripts/vendor.js -->
+	<!-- bower:js -->
+	<!-- endbower -->
+	<!-- endbuild -->
+
+	<!-- build:js scripts/app.js -->
+	<script src="scripts/app.js"></script>
+	<!-- endbuild -->
+</body>
+
+</html>
