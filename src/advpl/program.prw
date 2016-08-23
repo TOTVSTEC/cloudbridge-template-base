@@ -1,6 +1,6 @@
 #include "TOTVS.CH"
 
-Class <%= appname %> From CloudBridgeApp
+Class <%= project.name %> From CloudBridgeApp
 	Data StartTime
 
 	Method New() Constructor
@@ -9,15 +9,15 @@ Class <%= appname %> From CloudBridgeApp
 	
 EndClass
 
-Method New() Class <%= appname %>
+Method New() Class <%= project.name %>
 	SELF:StartTime:= Seconds()
 Return
 
-Method OnStart() Class <%= appname %>
+Method OnStart() Class <%= project.name %>
 	SELF:WebView:navigate(SELF:RootPath + "index.html")
 Return
 
-Method OnLoadFinished(url) Class <%= appname %>
+Method OnLoadFinished(url) Class <%= project.name %>
 	Local script
 	Local loadTime
 	
@@ -50,5 +50,5 @@ Method OnLoadFinished(url) Class <%= appname %>
 Return
 
 
-User Function <%= appname %>()
+User Function <%= project.name %>()
 Return
