@@ -5,21 +5,21 @@ var task = module.exports,
 	utils = null,
 	data = null,
 	cloudbridge = null,
-    projectDir = null;
+	projectDir = null;
 
 task.run = function run(cli, targetPath) {
 	cloudbridge = cli;
-    projectDir = targetPath;
+	projectDir = targetPath;
 	Q = cloudbridge.require('q');
 	shelljs = cloudbridge.require('shelljs');
 	utils = cloudbridge.utils;
 	data = {
-        project: require(path.join(targetPath, 'cloudbridge.json'))
-    };
+		project: require(path.join(targetPath, 'cloudbridge.json'))
+	};
 
 	return Q()
-		.then(copySources)
-}
+		.then(copySources);
+};
 
 function copySources() {
 	var src = path.join(__dirname, 'src'),
@@ -28,8 +28,8 @@ function copySources() {
 
 	utils.copyTemplate(src, target, data, extensions);
 
-    src = path.join(target, 'advpl', 'program.prw')
-    target = path.join(target, 'advpl', data.project.name + '.prw');
+	src = path.join(target, 'advpl', 'program.prw');
+	target = path.join(target, 'advpl', data.project.name + '.prw');
 
 	shelljs.mv(src, target);
 };
