@@ -4,15 +4,13 @@ var task = module.exports,
 	shelljs = null,
 	utils = null,
 	data = null,
-	cloudbridge = null,
 	projectDir = null;
 
 task.run = function run(cli, targetPath) {
-	cloudbridge = cli;
 	projectDir = targetPath;
-	Q = cloudbridge.require('q');
-	shelljs = cloudbridge.require('shelljs');
-	utils = cloudbridge.utils;
+	Q = cli.require('q');
+	shelljs = cli.require('shelljs');
+	utils = cli.utils;
 	data = {
 		project: require(path.join(targetPath, 'cloudbridge.json'))
 	};
