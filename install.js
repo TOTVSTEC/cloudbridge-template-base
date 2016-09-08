@@ -16,7 +16,8 @@ task.run = function run(cli, targetPath) {
 	};
 
 	return Q()
-		.then(copySources);
+		.then(copySources)
+		.then(copyDependencies);
 };
 
 function copySources() {
@@ -30,4 +31,12 @@ function copySources() {
 	target = path.join(target, 'advpl', data.project.name + '.prw');
 
 	shelljs.mv(src, target);
+};
+
+function copyDependencies() {
+	var src = path.join(__dirname, 'build', '*'),
+		target = path.join(projectDir, 'build');
+
+	shelljs.mkdir('-p', target);
+	shelljs.cp('-Rf', src, target);
 };
