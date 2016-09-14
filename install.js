@@ -4,20 +4,23 @@ var task = module.exports,
 	shelljs = null,
 	utils = null,
 	data = null,
-	projectDir = null;
+	projectDir = null,
+	BowerAddTask = null;
 
 task.run = function run(cli, targetPath) {
 	projectDir = targetPath;
 	Q = cli.require('q');
 	shelljs = cli.require('shelljs');
 	utils = cli.utils;
+	BowerAddTask = cli.cb_require('tasks/bower-add');
 	data = {
 		project: require(path.join(targetPath, 'cloudbridge.json'))
 	};
 
 	return Q()
 		.then(copySources)
-		.then(copyDependencies);
+		.then(copyDependencies)
+		.then(installBowerDependencies);
 };
 
 function copySources() {
@@ -39,4 +42,13 @@ function copyDependencies() {
 
 	shelljs.mkdir('-p', target);
 	shelljs.cp('-Rf', src, target);
+};
+
+function installBowerDependencies() {
+	var bower = new BowerAddTask({
+		silent: true,
+		target: projectDir
+	});
+
+	return bower.install(['totvs-twebchannel']);
 };
