@@ -3,7 +3,7 @@ var task = module.exports,
 	Q = null,
 	shelljs = null,
 	utils = null,
-	data = null,
+	templateData = null,
 	projectDir = null,
 	BowerAddTask = null;
 
@@ -13,9 +13,13 @@ task.run = function run(cli, targetPath) {
 	shelljs = cli.require('shelljs');
 	utils = cli.utils;
 	BowerAddTask = cli.cb_require('tasks/bower-add');
-	data = {
-		project: require(path.join(targetPath, 'cloudbridge.json'))
+	project = cli.cb_require('project/project').load(projectDir),
+	templateData = {
+		project: project.data()
 	};
+
+	project.set('main', 'src/web/index.html');
+	project.save();
 
 	return Q()
 		.then(copySources)
@@ -28,10 +32,10 @@ function copySources() {
 		target = path.join(projectDir, 'src'),
 		extensions = /\.(html|css|js|prw)/;
 
-	utils.copyTemplate(src, target, data, extensions);
+	utils.copyTemplate(src, target, templateData, extensions);
 
 	src = path.join(target, 'advpl', 'program.prw');
-	target = path.join(target, 'advpl', data.project.name + '.prw');
+	target = path.join(target, 'advpl', templateData.project.name + '.prw');
 
 	shelljs.mv(src, target);
 };
