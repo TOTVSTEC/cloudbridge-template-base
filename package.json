@@ -4,6 +4,11 @@
   "description": "Base template for cloudbridge apps",
   "main": "install.js",
   "license": "MIT",
+  "scripts": {
+    "release": "totvstec release",
+    "release:minor": "totvstec release minor",
+    "release:major": "totvstec release major"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/TOTVSTEC/cloudbridge-template-base.git"
@@ -17,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/TOTVSTEC/cloudbridge-template-base/issues"
   },
-  "homepage": "https://github.com/TOTVSTEC/cloudbridge-template-base#readme"
+  "homepage": "https://github.com/TOTVSTEC/cloudbridge-template-base#readme",
+  "devDependencies": {
+    "totvstec-tools": "^1.0.5"
+  }
 }
