@@ -1,6 +1,6 @@
 {
   "name": "cloudbridge-template-base",
-  "version": "0.0.1-SNAPSHOT",
+  "version": "0.0.1",
   "description": "Base template for cloudbridge apps",
   "main": "install.js",
   "license": "MIT",
