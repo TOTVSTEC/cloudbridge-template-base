@@ -45,5 +45,5 @@ function installBowerDependencies() {
 		target: projectDir
 	});
 
-	return bower.install(['cloudbridge-core-js']);
+	return bower.install(['totvs-twebchannel']);
 }
